@@ -5,6 +5,7 @@ import com.example.mysqldumpangular.model.CourseDTO;
 import com.example.mysqldumpangular.repository.CourseRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,5 +50,18 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course create(CourseDTO courseDTO) {
         return courseRepository.save(toEntity(courseDTO));
+    }
+
+    @Override @Transactional
+    public CourseDTO update(int id,CourseDTO courseDTO) {
+        Course old=courseRepository.getOne(id);
+        old.setCategory(courseDTO.getCategory());
+        old.setDescription(courseDTO.getDescription());
+        old.setLessonsCount(courseDTO.getLessonsCount());
+        old.setLongDescription(courseDTO.getLongDescription());
+        old.setPrice(courseDTO.getPrice());
+        old.setSeqNo(courseDTO.getSeqNo());
+        old.setUrl(courseDTO.getUrl());
+        return toDTO(old);
     }
 }

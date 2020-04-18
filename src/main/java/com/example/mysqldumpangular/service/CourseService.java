@@ -11,6 +11,6 @@ public interface CourseService {
     List<CourseDTO> findAll();
     Course create(CourseDTO courseDTO);
 
-    
+    CourseDTO update(int id,CourseDTO courseDTO);
 
 }

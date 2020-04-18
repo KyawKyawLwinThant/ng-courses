@@ -6,14 +6,12 @@ import com.example.mysqldumpangular.service.CourseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class CourseController {
 
     private final CourseService courseService;
@@ -26,6 +24,11 @@ public class CourseController {
     public ResponseEntity<CourseDTO> create(@RequestBody CourseDTO courseDTO){
         this.courseService.create(courseDTO);
         return new ResponseEntity<>(courseDTO, HttpStatus.CREATED);
+    }
+    @CrossOrigin
+    @PutMapping(value="/courses/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CourseDTO> update(@PathVariable int id,@RequestBody CourseDTO courseDTO){
+        return new ResponseEntity<CourseDTO>(courseService.update(id,courseDTO),HttpStatus.OK);
     }
 
     @GetMapping("/courses")
