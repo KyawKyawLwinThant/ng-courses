@@ -26,8 +26,9 @@ public class CourseController {
         return new ResponseEntity<>(courseDTO, HttpStatus.CREATED);
     }
     @CrossOrigin
-    @PutMapping(value="/courses/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value="/courses/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CourseDTO> update(@PathVariable int id,@RequestBody CourseDTO courseDTO){
+        System.out.println("From CourseController:"+ id);
         return new ResponseEntity<CourseDTO>(courseService.update(id,courseDTO),HttpStatus.OK);
     }
 
