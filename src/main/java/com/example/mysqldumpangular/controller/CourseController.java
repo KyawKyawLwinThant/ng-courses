@@ -34,6 +34,7 @@ public class CourseController {
 
     @GetMapping("/courses")
     public List<CourseDTO> findAll(){
+        System.out.println("test 1");
         return courseService.findAll();
     }
 }
