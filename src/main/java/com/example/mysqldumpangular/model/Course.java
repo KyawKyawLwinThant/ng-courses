@@ -18,6 +18,7 @@ public class Course{
     private int seqNo;
     private String url;
     private int price;
+    private String courseListIcon;
 
     public Integer getId() {
         return id;
@@ -85,6 +86,14 @@ public class Course{
 
     public int getPrice() {
         return price;
+    }
+
+    public String getCourseListIcon() {
+        return courseListIcon;
+    }
+
+    public void setCourseListIcon(String courseListIcon) {
+        this.courseListIcon = courseListIcon;
     }
 
     public void setPrice(int price) {

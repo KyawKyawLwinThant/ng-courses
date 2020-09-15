@@ -12,6 +12,7 @@ public class CourseDTO implements Serializable {
     private int seqNo;
     private String url;
     private int price;
+    private String courseListIcon;
 
     public Integer getId() {
         return id;
@@ -39,6 +40,14 @@ public class CourseDTO implements Serializable {
 
     public String getIconUrl() {
         return iconUrl;
+    }
+
+    public String getCourseListIcon() {
+        return courseListIcon;
+    }
+
+    public void setCourseListIcon(String courseListIcon) {
+        this.courseListIcon = courseListIcon;
     }
 
     public void setIconUrl(String iconUrl) {
